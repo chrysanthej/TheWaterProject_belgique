@@ -4,19 +4,18 @@
 
 @model ProjectsListViewModel
 
-    <h1>The Water Project</h1>
+<h1>The Water Project</h1>
 @foreach (Project p in Model.Projects)
 {
-    <h3>@p.ProjectName</h3>
-    <ul>
-        <li>Project Type: @p.ProjectType</li>
-        <li>Program Type: @p.ProgramName</li>
-        <li>Impact: @p.ProjectImpact Served</li>
-        <li>Date: @p.ProjectInstallation</li>
-    </ul>   
+
+    <partial name="ProjectSummary" model="p"/>
+  
 }
 
 
-<div page-model="@Model.PaginationInfo" page-action="Index">
+<div page-model="@Model.PaginationInfo" page-action="Index" page-class-enabled="true" 
+    page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+    page-url-projectType = "@Model.CurrentProjectType"
+    class="btn-group pull-right m-1">
 
 </div>

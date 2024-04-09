@@ -1,0 +1,29 @@
+﻿@using TheWaterProject.Infrastructure
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Project
+
+<div class="card m-1 p-1">
+    <h3>
+        @Model.ProjectName
+        <span class="badge rounded-pill bg-primary text-white float-end">
+            <small>
+                Impact: @Model.ProjectImpact Served
+            </small>
+        </span>
+    </h3>
+    <ul>
+        <li>Project Type: @Model.ProjectType</li>
+        <li>Program Type: @Model.ProgramName</li>
+        <li>Date: @Model.ProjectInstallation</li>
+    </ul>
+    <form id=@Model.ProjectId method="post" asp-page="/Cart">
+        <input type="hidden" asp-for="ProjectId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <button type="submit" class="btn-outline-success btn-small float-end">Donate</button>
+    </form>
+</div>
